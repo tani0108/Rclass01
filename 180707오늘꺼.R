@@ -1,0 +1,155 @@
+# 오칙연산
+1+1
+a <- 1
+a
+b <- 2
+b
+ver01 <- c(1,2,3,7)
+ver02
+ver01
+ver02 <- c(1:5)
+ver02
+ver03 <- seq(1,5)
+ver03
+ver04 <- 1:5
+ver04
+vec05 <- seq(1L,10L, by=2)
+vec05
+class(vec05)
+ver06 <- 1:3
+mean(ver06)
+class(ver06)
+## 5+7 더하기 로직을 구하시오
+x <- 5
+y <- 7
+x+y
+## 5+7 더하기 로직을 식까지 보이도록 구하시오
+op <- "+"
+ep <- "="
+cat(x,op,y,ep,x+y)
+## 더하기 로직을 보이도록 구하시오
+plus <- function(x,y){return(x+y)}
+plus(3,4)
+## 빼기
+minus <- function(x,y){return(x-y)}
+minus(3,4)
+## 곱하기
+mutiple <- function(x,y,z,d){return(x*y*z*d)}
+mutiple(1,2,3,4)
+## 나누기
+divid <- function(x,y){return(x%/%y)}
+divid(8,4)
+remainder<- function(x,y){return(x%%y)}
+remainder(8,4)
+## assignment <-
+## branch : 분기문 (if/switch)
+## loop : 반복문
+##if-else 구문 : 함수만들기전 / == => ~라면
+op <- "+"
+x <- 6
+y <- 3
+if(op=="+")print(x+y)else
+if(op=="-")print(x-y)else
+if(op=="*")print(x*y)else
+if(op=="/")print(x%/%y)else
+if(op=="%")print(x%%y)else
+  print("error")
+
+op <- "+"
+x <- 6
+y <- 3
+if(op=="+")x+y else
+  if(op=="-") x-y else
+    if(op=="*")x*y else
+      if(op=="/")x%/%y else
+        if(op=="%")x%%y else
+          "error"
+
+##switch 구문 : 함수만들기전 (if보다 빨리 결과산출)
+op <- "+"
+x <- 6
+y <- 3
+switch(
+ op,
+ "+"=cat(x,op,y,"=",x+y),
+ "-"=cat(x,op,y,"=",x-y),
+ "*"=cat(x,op,y,"=",x*y),
+ "/"=cat(x,op,y,"=",x%/%y),
+ "%"=cat(x,op,y,"=",x%%y),
+ "error"
+)
+
+##if-else 구문 : 함수
+#cat은 문장을 결합해서 출력
+calc <- function(x,op,y){
+  res<-if(op=="+")x+y else
+    if(op=="-")x-y else
+      if(op=="*")x*y else
+        if(op=="/")x%/%y else
+          if(op=="%")x%%y else
+            "error"
+  return(cat(x,op,y,"=",res))
+}
+calc(2,"*",3)
+
+##switch 구문 : 함수
+calc<-function(x,op,y){
+      res<-switch(
+      op,
+      "+"=x+y,
+      "-"=x-y,
+      "*"=x*y,
+      "/"=x%/%y,
+      "%"=x%%y,
+      "error" 
+      ) 
+  return(res)
+}
+calc(3,"+",4)
+
+
+
+
+
+
+## 성적표
+# kor, eng, math, 총점, 평균
+# grade(80,80,80)
+# 총점:240 평균:80
+
+kor<-80
+eng<-80
+math<-80
+sum<-kor+eng+math
+sum
+mean<-(kor+eng+math)%/%3
+mean
+
+grade<-function(x,y,z){
+      
+       return(cat("총점은으능느느:",x+y+z,"평균:",(x+y+z)/3)
+         
+       )}
+
+grade(80,80,80)
+
+
+## 성적표
+# kor, eng, math, 총점, 평균
+# grade(80,80,80)
+# 총점:240 평균:80 등급:
+# IF-else, switch
+# 평균 90이상 A, 80이상 B, 70이상 C, 60이상 D, 50이상 E, 그밖이면 F
+
+grade<-function(kor,eng,math){
+       sum<- kor+eng+math
+       ave<- sum/3
+       grade<-if(ave>=90)"A" else 
+              if(ave>=80)"B" else
+              if(ave>=70)"c" else
+              if(ave>=60)"D" else
+              if(ave>=50)"E" else
+              "F"
+       return(cat("총점:",sum, "평균:",ave ,"등급:",grade)
+       )}
+grade(70,80,80)
